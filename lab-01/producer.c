@@ -12,11 +12,11 @@ void* producer() {
         sem_getvalue(&full, &index);
         buffer[index] = randomNumber;
         printf("\033[0;31mproducer:\033[0m add %d\n", randomNumber);
-        V(&mutex);
-        V(&full);
-
         printBuffer(buffer, SIZE);
         printf("\n");
+        V(&mutex);
+        V(&full);
+        
         sleep(randomTime);
     }
 }

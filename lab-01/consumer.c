@@ -8,13 +8,13 @@ void* consumer() {
 
         P(&full);
         P(&mutex);
-        printf("\033[0;32mconsumer:\033[0m remove %d\n", buffer[0]);
         removeFirstElement(buffer, SIZE);
+        printf("\033[0;32mconsumer:\033[0m remove %d\n", buffer[0]);
+        printBuffer(buffer, SIZE);
+        printf("\n");
         V(&mutex);
         V(&empty);
 
-        printBuffer(buffer, SIZE);
-        printf("\n");
         sleep(randomTime);
     }
 }
